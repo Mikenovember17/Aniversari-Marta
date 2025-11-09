@@ -80,19 +80,19 @@
 </head>
 <body>
 
-<!-- Áudio local -->
+<!-- Audio local -->
 <audio id="bg-music" loop>
-  <source src="happy-day.mp3" type="audio/mpeg">
+  <source src="happy-birthday.mp3" type="audio/mpeg">
   El teu navegador no suporta àudio.
 </audio>
 
-<!-- Pantalla inicial per iniciar -->
+<!-- Pantalla inicial -->
 <div id="start-screen">
   <h1>🎂 Fes clic per començar la teva sorpresa!</h1>
   <button id="start-btn">Començar ▶</button>
 </div>
 
-<!-- Diapositives (amagades fins que es prem el botó) -->
+<!-- Diapositives -->
 <div id="slides" class="hidden">
 
   <div class="slide active">
@@ -115,59 +115,4 @@
   <div class="slide">
     <h1>🎁 Un petit detall per a tu!</h1>
     <p>Fes clic al regal per descobrir-ho...</p>
-    <a href="https://www.victordelvalle.com" target="_blank">
-      <img src="regalo2.jpg" alt="Regal" class="gift-img">
-    </a>
-  </div>
-
-  <div class="slide">
-    <h1>💫 Fins aviat, TITINA!</h1>
-    <button onclick="showSlide(0)">Torna a començar ◀</button>
-  </div>
-
-  <div class="controls">
-    <button onclick="prevSlide()">◀</button>
-    <button onclick="nextSlide()">▶</button>
-  </div>
-
-</div>
-
-<script>
-let currentSlide = 0;
-const slides = document.querySelectorAll('.slide');
-const startScreen = document.getElementById('start-screen');
-const slidesContainer = document.getElementById('slides');
-const bgMusic = document.getElementById('bg-music');
-const startBtn = document.getElementById('start-btn');
-
-// Evento click seguro para reproducir música y mostrar slides
-startBtn.addEventListener('click', () => {
-  bgMusic.play().catch(error => {
-    console.log("El navegador bloquea la reproducción automática hasta que haya interacción:", error);
-  });
-
-  startScreen.classList.add('hidden');
-  slidesContainer.classList.remove('hidden');
-});
-
-function showSlide(index) {
-  slides[currentSlide].classList.remove('active');
-  currentSlide = index;
-  slides[currentSlide].classList.add('active');
-}
-
-function nextSlide() {
-  let next = currentSlide + 1;
-  if (next >= slides.length) next = 0;
-  showSlide(next);
-}
-
-function prevSlide() {
-  let prev = currentSlide - 1;
-  if (prev < 0) prev = slides.length - 1;
-  showSlide(prev);
-}
-</script>
-
-</body>
-</html>
+    <a href="https://www.victordelvalle.co

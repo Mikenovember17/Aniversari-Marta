@@ -90,7 +90,6 @@
 <div id="start-screen">
   <h1>🎂 Fes clic per començar la teva sorpresa!</h1>
   <button id="start-btn">Començar ▶</button>
-  <button id="play-music-btn">🎵 Reproduir música</button>
 </div>
 
 <!-- Diapositives -->
@@ -140,17 +139,16 @@ const startScreen = document.getElementById('start-screen');
 const slidesContainer = document.getElementById('slides');
 const bgMusic = document.getElementById('bg-music');
 const startBtn = document.getElementById('start-btn');
-const playMusicBtn = document.getElementById('play-music-btn');
 
-// Botón para iniciar la presentación
+// Reproducir música en el primer toque de pantalla
+document.body.addEventListener('touchstart', () => {
+  bgMusic.play().catch(e => console.log("Bloqueo autoplay:", e));
+}, { once: true });
+
+// Iniciar presentación al hacer click en el botón
 startBtn.addEventListener('click', () => {
   startScreen.classList.add('hidden');
   slidesContainer.classList.remove('hidden');
-});
-
-// Botón para reproducir la música (funciona en todos los móviles)
-playMusicBtn.addEventListener('click', () => {
-  bgMusic.play().catch(e => console.log("Bloqueo de autoplay:", e));
 });
 
 // Funciones de navegación de diapositivas

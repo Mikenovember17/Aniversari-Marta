@@ -80,11 +80,11 @@
 </head>
 <body>
 
-<!-- Áudio: melodia clàssica de "Feliz cumpleaños" -->
 <audio id="bg-music" loop>
   <source src="happy-day.mp3" type="audio/mpeg">
   El teu navegador no suporta àudio.
 </audio>
+
 
 <!-- Pantalla inicial per iniciar -->
 <div id="start-screen">
@@ -140,14 +140,17 @@ const startScreen = document.getElementById('start-screen');
 const slidesContainer = document.getElementById('slides');
 
 function startPresentation() {
-  // Reproducir música al hacer clic
-  bgMusic.play().catch(error => {
+  // Reproducir música
+  const music = document.getElementById('bg-music');
+  music.play().catch(error => {
     console.log("El navegador bloquea la reproducción automática hasta que haya interacción:", error);
   });
-  
+
+  // Mostrar slides
   startScreen.classList.add('hidden');
   slidesContainer.classList.remove('hidden');
 }
+
 
 function showSlide(index) {
   slides[currentSlide].classList.remove('active');

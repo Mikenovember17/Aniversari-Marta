@@ -80,19 +80,19 @@
 </head>
 <body>
 
-<!-- Audio local -->
+<!-- Áudio local -->
 <audio id="bg-music" loop>
   <source src="happy-birthday.mp3" type="audio/mpeg">
   El teu navegador no suporta àudio.
 </audio>
 
-<!-- Pantalla inicial -->
+<!-- Pantalla inicial per iniciar -->
 <div id="start-screen">
   <h1>🎂 Fes clic per començar la teva sorpresa!</h1>
   <button id="start-btn">Començar ▶</button>
 </div>
 
-<!-- Diapositives -->
+<!-- Diapositives (amagades fins que es prem el botó) -->
 <div id="slides" class="hidden">
 
   <div class="slide active">
@@ -140,13 +140,12 @@ const slidesContainer = document.getElementById('slides');
 const bgMusic = document.getElementById('bg-music');
 const startBtn = document.getElementById('start-btn');
 
-// Reproducir música en el primer toque de pantalla
-document.body.addEventListener('touchstart', () => {
-  bgMusic.play().catch(e => console.log("Bloqueo autoplay:", e));
-}, { once: true });
-
-// Iniciar presentación al hacer click en el botón
+// Evento click seguro para reproducir música y mostrar slides
 startBtn.addEventListener('click', () => {
+  bgMusic.play().catch(error => {
+    console.log("El navegador bloquea la reproducción automática hasta que haya interacción:", error);
+  });
+
   startScreen.classList.add('hidden');
   slidesContainer.classList.remove('hidden');
 });

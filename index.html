@@ -80,11 +80,11 @@
 </head>
 <body>
 
-<audio id="bg-music" loop>
-  <source src="happy-day.mp3" type="audio/mpeg">
-  El teu navegador no suporta àudio.
-</audio>
+<button id="start-btn">Començar ▶</button>
 
+<audio id="bg-music" loop>
+  <source src="happy-birthday.mp3" type="audio/mpeg">
+</audio>
 
 <!-- Pantalla inicial per iniciar -->
 <div id="start-screen">
@@ -133,42 +133,21 @@
 </div>
 
 <script>
-let currentSlide = 0;
-const slides = document.querySelectorAll('.slide');
-const bgMusic = document.getElementById('bg-music');
-const startScreen = document.getElementById('start-screen');
-const slidesContainer = document.getElementById('slides');
+const btn = document.getElementById('start-btn');
+const music = document.getElementById('bg-music');
 
-function startPresentation() {
-  // Reproducir música
-  const music = document.getElementById('bg-music');
-  music.play().catch(error => {
-    console.log("El navegador bloquea la reproducción automática hasta que haya interacción:", error);
+btn.addEventListener('click', () => {
+  // Reproducir audio
+  music.play().then(() => {
+    console.log("Música iniciada correctamente");
+  }).catch(e => {
+    console.log("El navegador bloquea la reproducción automática:", e);
   });
 
-  // Mostrar slides
-  startScreen.classList.add('hidden');
-  slidesContainer.classList.remove('hidden');
-}
-
-
-function showSlide(index) {
-  slides[currentSlide].classList.remove('active');
-  currentSlide = index;
-  slides[currentSlide].classList.add('active');
-}
-
-function nextSlide() {
-  let next = currentSlide + 1;
-  if (next >= slides.length) next = 0;
-  showSlide(next);
-}
-
-function prevSlide() {
-  let prev = currentSlide - 1;
-  if (prev < 0) prev = slides.length - 1;
-  showSlide(prev);
-}
+  // Aquí puedes mostrar tus diapositivas
+  document.getElementById('start-screen').classList.add('hidden');
+  document.getElementById('slides').classList.remove('hidden');
+});
 </script>
 
 </body>

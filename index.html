@@ -80,9 +80,9 @@
 </head>
 <body>
 
-<!-- Àudio: melodia clàssica de "Feliz cumpleaños" -->
+<!-- Áudio: melodia clàssica de "Feliz cumpleaños" -->
 <audio id="bg-music" loop>
-  <source src="https://cdn.pixabay.com/download/audio/2022/03/22/audio_d9f84c9e93.mp3?filename=happy-birthday-to-you-13393.mp3" type="audio/mpeg">
+  <source src="happy-day.mp3" type="audio/mpeg">
   El teu navegador no suporta àudio.
 </audio>
 
@@ -116,9 +116,8 @@
     <h1>🎁 Un petit detall per a tu!</h1>
     <p>Fes clic al regal per descobrir-ho...</p>
     <a href="https://www.victordelvalle.com" target="_blank">
-  <img src="regalo2.jpg" alt="Regal" class="gift-img">
-
-</a>
+      <img src="regalo2.jpg" alt="Regal" class="gift-img">
+    </a>
   </div>
 
   <div class="slide">
@@ -141,7 +140,11 @@ const startScreen = document.getElementById('start-screen');
 const slidesContainer = document.getElementById('slides');
 
 function startPresentation() {
-  bgMusic.play();
+  // Reproducir música al hacer clic
+  bgMusic.play().catch(error => {
+    console.log("El navegador bloquea la reproducción automática hasta que haya interacción:", error);
+  });
+  
   startScreen.classList.add('hidden');
   slidesContainer.classList.remove('hidden');
 }
